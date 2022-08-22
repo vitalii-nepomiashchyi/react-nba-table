@@ -1,3 +1,9 @@
 .header {
-  padding: 80px 78px 0;
+  margin: 40px 38px 0;
+}
+
+@media (min-width: 1240px) {
+  .header {
+    margin: 80px 78px 0;
+  }
 }

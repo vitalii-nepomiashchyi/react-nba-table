@@ -6,5 +6,25 @@ html {
 
 .main-heading {
   font-weight: 700;
-  font-size: 72px;
+  font-size: 36px;
+  line-height: 1.2em;
+  color: #14141E
+}
+
+.section-heading {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.25em;
+  color: #14141E;
+}
+
+
+@media (min-width: 1240px) {
+  .main-heading {
+    font-size: 72px;
+  }
+
+  .section-heading {
+    font-size: 32px;
+  }
 }
