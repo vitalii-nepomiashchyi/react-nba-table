@@ -1,16 +1,26 @@
 import React from "react";
 import { useTeams } from "hooks/useTeams";
+import { TailSpin } from "react-loader-spinner";
 
 import styles from './teamsTable.module.scss';
 
 export const TeamsTable:React.FC = () => {
-  const { table } = styles;
+  const { table, loader } = styles;
   const { teams, loading }  = useTeams();
 
-  // TODO loading
   if (loading) {
-
-    return <div></div>
+    return (
+      <TailSpin
+        height={80}
+        width={80}
+        color="#652AD3"
+        ariaLabel="tail-spin-loading"
+        radius="1"
+        wrapperStyle={{}}
+        wrapperClass={loader}
+        visible={true}
+      />
+    ) 
   }
   
   return (

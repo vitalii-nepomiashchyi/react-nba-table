@@ -13,8 +13,6 @@ export const usePlayers = (): ReturnValue => {
   // TODO handle queryParams
   const [ { data, loading, error }, refetch ] = useAxios("https://www.balldontlie.io/api/v1/players?per_page=8");
 
-  console.log(data)
-
   return {
     players: data && data.data,
     loading,

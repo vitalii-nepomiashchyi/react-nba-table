@@ -6,7 +6,7 @@ export const Players:React.FC = () => {
   const { section } = styles;
 
   return (
-    <section className={section}>
+    <section className={section} >
       <h2 className="section-heading">Players</h2>
       <PlayersList />
     </section>
