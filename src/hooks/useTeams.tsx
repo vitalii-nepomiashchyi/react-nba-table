@@ -1,19 +1,12 @@
 import { AxiosError } from "axios";
 import useAxios from "axios-hooks"
+import { Team } from "types";
 
 interface ReturnValue {
   teams: Team[],
   loading: boolean,
   error: AxiosError | null,
   refetch: () => void,
-}
-
-// Move to separate file
-interface Team {
-  name: string,
-  city: string,
-  abbreviation: string,
-  conference: 'East' | 'West',
 }
 
 export const useTeams = (): ReturnValue => {
