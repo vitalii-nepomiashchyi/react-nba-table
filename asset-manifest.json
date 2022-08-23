@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/react-nba-table/static/css/main.fb45d38b.css",
+    "main.js": "/react-nba-table/static/js/main.78cc24b8.js",
+    "index.html": "/react-nba-table/index.html",
+    "main.fb45d38b.css.map": "/react-nba-table/static/css/main.fb45d38b.css.map",
+    "main.78cc24b8.js.map": "/react-nba-table/static/js/main.78cc24b8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fb45d38b.css",
+    "static/js/main.78cc24b8.js"
+  ]
+}
