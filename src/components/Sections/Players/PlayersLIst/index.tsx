@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { usePlayers } from "hooks/usePlayers";
 import { PlayerCard } from "./PlayerCard";
 import { TailSpin } from "react-loader-spinner";
+import { Pagination } from "components/common/Pagination";
 
 import styles from './playersList.module.scss';
 
 export const PlayersList:React.FC = () => {
   const { list, loader } = styles;
-  const { players, loading } = usePlayers();
+  const [page, setPage] = useState(1);
+  const [perPage, setperPage] = useState(8);
+  const { players, meta, loading } = usePlayers(page, perPage);
 
   if (loading) {
     return (
@@ -25,10 +28,19 @@ export const PlayersList:React.FC = () => {
   }
 
   return (
-    <ul className={list}>
-      {
-        players.map((player) => <PlayerCard player={player} />)
-      }
-    </ul>
+    <>
+      <ul className={list}>
+        {
+          players.map((player) => <PlayerCard player={player} />)
+        }
+      </ul>
+
+      <Pagination
+        meta={meta}
+        type="player"
+        setPage={setPage}
+        setPerPage={setperPage}
+      />
+    </>
   );
 };

@@ -1,22 +1,27 @@
 import { AxiosError } from "axios";
 import useAxios from "axios-hooks"
-import { Team } from "types";
+import { useEffect } from "react";
+import { Team, MetaData } from "types";
+
 
 interface ReturnValue {
   teams: Team[],
+  meta: MetaData,
   loading: boolean,
   error: AxiosError | null,
-  refetch: () => void,
 }
 
-export const useTeams = (): ReturnValue => {
-  // TODO handle queryParams
-  const [ { data, loading, error }, refetch ] = useAxios('https://www.balldontlie.io/api/v1/teams?per_page=10')
+export const useTeams = (page: number, perPage: number,): ReturnValue => {
+  const [ { data, loading, error } ] = useAxios(`https://www.balldontlie.io/api/v1/teams?page=${page}&per_page=${perPage}`);
+
+  useEffect(() => {
+    data && console.log(data.meta)
+  }, [data])
 
   return {
     teams: data && data.data,
+    meta: data && data.meta,
     loading,
     error,
-    refetch,
   }
 }

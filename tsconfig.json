@@ -23,6 +23,7 @@
     "paths": {
       "components/*": ["./components/*"],
       "hooks/*": ["./hooks/*"],
+      "images/*": ["./images/*"],
     }
   },
   "include": [
