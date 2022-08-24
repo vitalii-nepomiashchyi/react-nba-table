@@ -108,7 +108,7 @@
       }
     }
 
-    :global td.East .inner {
+    :global td.East .inner, :global td.West .inner {
       background-color: transparent;
       color: #14141E;
       padding: 0;
