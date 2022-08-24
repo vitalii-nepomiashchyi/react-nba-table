@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { AddTeamForm } from "components/Sections/Teams/AddTeamForm";
 import { TeamsTable } from "components/Sections/Teams/TeamsTable";
 import { useTeams } from "hooks/useTeams";
@@ -13,8 +13,10 @@ export const Teams = () => {
 
   const data = useTeams();
 
+  const teamsFromStorage = sessionStorage.getItem('addedTeams');
+  
   const [addedTeams, setAddedTeams] = useState<Team[]>(
-    JSON.parse(sessionStorage.getItem('addedTeams') || '') as Team[] || []
+    teamsFromStorage === null ? [] : JSON.parse(teamsFromStorage)
   );
 
   const addNewTeam = (newTeam: NewTeam) => {

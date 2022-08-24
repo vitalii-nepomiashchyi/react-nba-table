@@ -43,8 +43,6 @@ export const TeamsTable:React.FC<Props> = ({ teams , addedTeams, meta, loading }
       />
     ) 
   }
-
-  console.log(addedTeams);
   
   return (
     <>
