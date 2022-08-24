@@ -1,13 +1,15 @@
 {
   "files": {
-    "main.css": "/react-nba-table/static/css/main.fb45d38b.css",
-    "main.js": "/react-nba-table/static/js/main.78cc24b8.js",
+    "main.css": "/react-nba-table/static/css/main.63843952.css",
+    "main.js": "/react-nba-table/static/js/main.da35ac37.js",
     "index.html": "/react-nba-table/index.html",
-    "main.fb45d38b.css.map": "/react-nba-table/static/css/main.fb45d38b.css.map",
-    "main.78cc24b8.js.map": "/react-nba-table/static/js/main.78cc24b8.js.map"
+    "static/media/next.svg": "/react-nba-table/static/media/next.653e87856e8fdb113369bb7c86209969.svg",
+    "static/media/prev.svg": "/react-nba-table/static/media/prev.24fe8acae0c76f5ef7d986228947dc0d.svg",
+    "main.63843952.css.map": "/react-nba-table/static/css/main.63843952.css.map",
+    "main.da35ac37.js.map": "/react-nba-table/static/js/main.da35ac37.js.map"
   },
   "entrypoints": [
-    "static/css/main.fb45d38b.css",
-    "static/js/main.78cc24b8.js"
+    "static/css/main.63843952.css",
+    "static/js/main.da35ac37.js"
   ]
 }
