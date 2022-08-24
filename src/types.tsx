@@ -1,8 +1,11 @@
-export interface Team {
+export interface NewTeam {
   name: string,
   city: string,
   abbreviation: string,
   conference: 'East' | 'West',
+}
+export interface Team extends NewTeam{
+  id: number | string,
 }
 
 export interface MetaData {
@@ -15,4 +18,5 @@ export interface MetaData {
 export interface Player {
   first_name: string,
   last_name: string,
+  id: number,
 }

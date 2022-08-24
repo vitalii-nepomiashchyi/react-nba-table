@@ -4,15 +4,20 @@ import * as Yup from 'yup';
 import styles from './addTeamForm.module.scss';
 import CustomSelect from "components/common/CustomSelect";
 import CustomInput from "components/common/CustomInput";
+import { NewTeam } from "types";
 
-export const AddTeamForm = () => {
+interface Props {
+  addNewTeam: ( newTeam: NewTeam ) => void;
+}
+
+export const AddTeamForm:React.FC<Props> = ({ addNewTeam }) => {
   const { form, input, submit } = styles;
 
   const initialValues = {
     name: '',
     city: '',
     abbreviation: '',
-    conference: 'east'
+    conference: 'East'
   };
 
   const lettersOnly = (value: string | undefined) => /^[a-zA-Z]+$/g.test(value || '');
@@ -39,7 +44,11 @@ export const AddTeamForm = () => {
     <Formik
       initialValues={initialValues} 
       validationSchema={validationSchema}
-      onSubmit={(values) => console.log(values)}
+      onSubmit={(team, { resetForm }) => {
+        addNewTeam(team as NewTeam)
+        
+        resetForm();
+      }}
     >
       <Form className={form}>
         <Field
@@ -66,8 +75,8 @@ export const AddTeamForm = () => {
           className={input}
           component={CustomSelect}
         >
-          <option value="east">East</option>
-          <option value="west">West</option>
+          <option value="East">East</option>
+          <option value="West">West</option>
         </Field>
         
         <button type="submit" className={submit}>Add team</button>

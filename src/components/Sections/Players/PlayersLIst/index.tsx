@@ -3,9 +3,9 @@ import { usePlayers } from "hooks/usePlayers";
 import { PlayerCard } from "./PlayerCard";
 import { TailSpin } from "react-loader-spinner";
 import { Pagination } from "components/common/Pagination";
+import { useSearchParams } from "react-router-dom";
 
 import styles from './playersList.module.scss';
-import { useSearchParams } from "react-router-dom";
 
 export const PlayersList:React.FC = () => {
   const { list, loader } = styles;
@@ -42,7 +42,7 @@ export const PlayersList:React.FC = () => {
     <>
       <ul className={list}>
         {
-          players.map((player) => <PlayerCard player={player} />)
+          players.map((player) => <PlayerCard key={player.id} player={player} />)
         }
       </ul>
 

@@ -1,17 +1,23 @@
 import React from "react";
-import { useTeams } from "hooks/useTeams";
 import { TailSpin } from "react-loader-spinner";
 import { Pagination } from "components/common/Pagination";
 import { useSearchParams } from "react-router-dom";
 
 import styles from './teamsTable.module.scss';
+import { MetaData, Team } from "types";
+import { Table } from "./Table";
 
-export const TeamsTable:React.FC = () => {
+interface Props {
+  teams: Team[],
+  addedTeams: Team[],
+  meta: MetaData,
+  loading: boolean,
+}
+
+export const TeamsTable:React.FC<Props> = ({ teams , addedTeams, meta, loading }) => {
   const { table, loader } = styles;
   
   const [newSearchParams, setNewSearchParams] = useSearchParams();
-
-  const { teams, meta, loading } = useTeams();
 
   const handlePageChange = (page: number) => {
     const searchObject = Object.fromEntries(new URLSearchParams(newSearchParams))
@@ -37,32 +43,16 @@ export const TeamsTable:React.FC = () => {
       />
     ) 
   }
+
+  console.log(addedTeams);
   
   return (
     <>
-      <table className={table}>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>City</th>
-            <th>Abbreviation</th>
-            <th>Conference</th>
-          </tr>
-        </thead>
+      {
+        addedTeams.length > 0 && <Table className={table} teams={addedTeams} heading="Added by you"/>
+      }
 
-        <tbody>
-          {
-            teams.map(({ name, city, abbreviation, conference }) => (
-              <tr>
-                <td>{name}</td>
-                <td>{city}</td>
-                <td>{abbreviation}</td>
-                <td className={conference}><div>{conference}</div></td>
-              </tr>
-            ))
-          }
-        </tbody>
-      </table>
+      <Table className={table} teams={teams} heading="From server"/>
       
       <Pagination 
         meta={meta} 

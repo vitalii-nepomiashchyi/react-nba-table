@@ -34,8 +34,9 @@ export const Pagination:React.FC<Props> = ({
     return (
       <>
         {[...Array(total_pages)].map((e, i) => {
+          const value = i + 1;
 
-          return <option value={i + 1}>{i + 1}</option>
+          return <option key={value}value={value}>{value}</option>
         })}
       </>
     )
@@ -50,7 +51,7 @@ export const Pagination:React.FC<Props> = ({
           const value = optionsStep + optionsStep * i;
           
           return (
-            <option value={value}>{value}</option>
+            <option key={value} value={value}>{value}</option>
           )
         })}
       </>
