@@ -79,30 +79,32 @@ export const Pagination:React.FC<Props> = ({
       <div className={subContainerRight}>
         <div>{`${current_page} of ${total_pages} pages`}</div>
 
-        <button 
-          className={prevPage}
-          disabled={current_page === 1}
-          onClick={() => handlePageChange(current_page - 1)}
-        >
+        <div>
+          <button 
+            className={prevPage}
+            disabled={current_page === 1}
+            onClick={() => handlePageChange(current_page - 1)}
+          >
 
-          <Prev stroke="#14141E"/>
-        </button>
+            <Prev stroke="#14141E"/>
+          </button>
 
-        <select
-          className={select} 
-          value={current_page}
-          onChange={(event) => {handlePageChange(+event.target.value)}}
-        >
-          { renderPageOptions() }
-        </select>
+          <select
+            className={select} 
+            value={current_page}
+            onChange={(event) => {handlePageChange(+event.target.value)}}
+          >
+            { renderPageOptions() }
+          </select>
 
-        <button 
-          className={nextPage}
-          disabled={current_page === total_pages}
-          onClick={() => handlePageChange(current_page + 1)}
-        >
-          <Next stroke="#14141E" />
-        </button>
+          <button 
+            className={nextPage}
+            disabled={current_page === total_pages}
+            onClick={() => handlePageChange(current_page + 1)}
+          >
+            <Next stroke="#14141E" />
+          </button>
+        </div>
       </div>
     </div>
   )

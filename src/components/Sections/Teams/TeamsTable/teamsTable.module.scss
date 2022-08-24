@@ -69,3 +69,52 @@
   margin: 24px 0;
   height: 686px;
 }
+
+@media (max-width: 769px) {
+  table {
+    width: 100%;
+
+    thead {
+      display: none;
+    }
+
+    tr {
+      display: block;
+      padding: 0 5px;
+      border-radius: 4px;
+
+      &:nth-child(even) {
+        background-color: #ede6fb;
+      }
+    }
+
+    td {
+      display: flex;
+      position: relative;
+      justify-content: flex-end;
+
+
+      &::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        top: calc(50% - 12px);
+        width: 50%;
+        text-align: left;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 1.5em;
+        text-transform: none;
+      }
+    }
+
+    :global td.East .inner {
+      background-color: transparent;
+      color: #14141E;
+      padding: 0;
+      font-size: 16px;
+      line-height: 1.5em;
+      font-weight: 400;
+    }
+  }
+}

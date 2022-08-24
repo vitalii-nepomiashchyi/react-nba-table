@@ -27,10 +27,10 @@ export const Table:React.FC<Props> = ({ className, heading, teams }) => {
           {
             teams.map(({ name, city, abbreviation, conference, id }) => (
               <tr key={id}>
-                <td>{name}</td>
-                <td>{city}</td>
-                <td>{abbreviation}</td>
-                <td className={conference}><div>{conference}</div></td>
+                <td data-label="Name">{name}</td>
+                <td data-label="City">{city}</td>
+                <td data-label="Abbreviation">{abbreviation}</td>
+                <td data-label="Conference" className={conference}><div className="inner">{conference}</div></td>
               </tr>
             ))
           }
