@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, } from "react";
+import React from "react";
 import { ReactComponent as Prev } from "images/prev.svg";
 import { ReactComponent as Next } from "images/next.svg";
 import { MetaData } from "types";
@@ -8,15 +8,17 @@ import styles from './pagination.module.scss';
 interface Props {
   meta: MetaData,
   type: 'player' | 'team',
-  setPage: Dispatch<SetStateAction<number>>
-  setPerPage: Dispatch<SetStateAction<number>>
+  // setPage: Dispatch<SetStateAction<number>>
+  // setPerPage: Dispatch<SetStateAction<number>>
+  handlePageChange: (page: number) => void;
+  handlePerPageChange: (page: number) => void;
 } 
 
 export const Pagination:React.FC<Props> = ({ 
   meta, 
   type, 
-  setPage,
-  setPerPage,
+  handlePageChange,
+  handlePerPageChange,
 }) => {
   const { container, subContainerLeft, subContainerRight, select, prevPage, nextPage } = styles;
   
@@ -55,7 +57,6 @@ export const Pagination:React.FC<Props> = ({
     )
   }
 
-
   return (
     <div className={container}>
       <div className={subContainerLeft}>
@@ -64,10 +65,7 @@ export const Pagination:React.FC<Props> = ({
         <select 
           className={select}
           value={per_page}
-          onChange={(event) => {
-            setPage(1);
-            setPerPage(+event.target.value);
-          }}
+          onChange={(event) => handlePerPageChange(+event.target.value)}
         >
           { renderPerPageOptions() }
         </select>
@@ -83,7 +81,7 @@ export const Pagination:React.FC<Props> = ({
         <button 
           className={prevPage}
           disabled={current_page === 1}
-          onClick={() => setPage(current_page - 1)}
+          onClick={() => handlePageChange(current_page - 1)}
         >
 
           <Prev stroke="#14141E"/>
@@ -92,7 +90,7 @@ export const Pagination:React.FC<Props> = ({
         <select
           className={select} 
           value={current_page}
-          onChange={(event) => setPage(+event.target.value)}
+          onChange={(event) => {handlePageChange(+event.target.value)}}
         >
           { renderPageOptions() }
         </select>
@@ -100,7 +98,7 @@ export const Pagination:React.FC<Props> = ({
         <button 
           className={nextPage}
           disabled={current_page === total_pages}
-          onClick={() => setPage(current_page + 1)}
+          onClick={() => handlePageChange(current_page + 1)}
         >
           <Next stroke="#14141E" />
         </button>

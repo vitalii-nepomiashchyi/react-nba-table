@@ -1,6 +1,6 @@
 import { AxiosError } from "axios";
 import useAxios from "axios-hooks"
-import { useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { Team, MetaData } from "types";
 
 
@@ -11,12 +11,13 @@ interface ReturnValue {
   error: AxiosError | null,
 }
 
-export const useTeams = (page: number, perPage: number,): ReturnValue => {
-  const [ { data, loading, error } ] = useAxios(`https://www.balldontlie.io/api/v1/teams?page=${page}&per_page=${perPage}`);
+export const useTeams = (): ReturnValue => {
+  const [searchParams] = useSearchParams();
 
-  useEffect(() => {
-    data && console.log(data.meta)
-  }, [data])
+  const page = searchParams.get('teamPage') || 1;
+  const perPage = searchParams.get('teamPerPage') || 10;
+  
+  const [ { data, loading, error } ] = useAxios(`https://www.balldontlie.io/api/v1/teams?page=${page}&per_page=${perPage}`);
 
   return {
     teams: data && data.data,

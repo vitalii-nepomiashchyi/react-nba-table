@@ -1,16 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 import { useTeams } from "hooks/useTeams";
 import { TailSpin } from "react-loader-spinner";
 import { Pagination } from "components/common/Pagination";
+import { useSearchParams } from "react-router-dom";
 
 import styles from './teamsTable.module.scss';
 
 export const TeamsTable:React.FC = () => {
   const { table, loader } = styles;
-  const [page, setPage] = useState<number>(1);
-  const [perPage, setPerPage] = useState<number>(10);
-  const { teams, meta, loading } = useTeams(page, perPage);
+  
+  const [newSearchParams, setNewSearchParams] = useSearchParams();
 
+  const { teams, meta, loading } = useTeams();
+
+  const handlePageChange = (page: number) => {
+    const searchObject = Object.fromEntries(new URLSearchParams(newSearchParams))
+    setNewSearchParams({ ...searchObject, teamPage: String(page) })
+  }
+
+  const handlePerPageChange = (perPage: number) => {
+    const searchObject = Object.fromEntries(new URLSearchParams(newSearchParams))
+    setNewSearchParams({ ...searchObject, teamPage: '1', teamPerPage: String(perPage)})
+  }
 
   if (loading) {
     return (
@@ -56,8 +67,8 @@ export const TeamsTable:React.FC = () => {
       <Pagination 
         meta={meta} 
         type="team" 
-        setPage={setPage}
-        setPerPage={setPerPage}
+        handlePageChange={handlePageChange}
+        handlePerPageChange={handlePerPageChange}
       />
     </>
   )
